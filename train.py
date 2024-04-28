@@ -93,22 +93,28 @@ if __name__ == "__main__":
     }
 
     param_grid_knn = {
-        'estimator__n_neighbors': [3, 5, 7, 10, 15],
+        'estimator__n_neighbors': [1, 3, 5, 7, 9, 11, 13, 15],
         'estimator__weights': ['uniform', 'distance'],
         # 'estimator__algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-        'estimator__p': [1, 2, 3]  # Typically, 1 (Manhattan) or 2 (Euclidean) are used, but you can explore others
+        # 'estimator__p': [1, 2, 3]  # Typically, 1 (Manhattan) or 2 (Euclidean) are used, but you can explore others
     }
 
+    param_grid_svm = {
+    'estimator__C': [0.1, 1, 10, 100],  # Regularization parameter
+    'estimator__kernel': ['linear', 'poly', 'rbf', 'sigmoid'],  # Type of kernel
+    'estimator__gamma': ['scale', 'auto', 0.01, 0.1, 1, 10],  # Kernel coefficient
+    'estimator__degree': [2, 3, 4]  # Degree for poly kernel
+    }
 
     # Define your estimators and their parameter grids
     estimators_and_parameters = {
-        'LDA': (LDA(), param_grid_lda),
-        'QDA': (QDA(), param_grid_qda),
-        'LR': (LogisticRegression(), param_grid_lr),
-        'DTR': (DecisionTreeClassifier(), param_grid_dtr),
-        # 'KNN': (KNeighborsClassifier(), param_grid_knn),
-        # 'SVM': (SVC(), param_grid_svm),
-        'RFC': (RandomForestClassifier(), param_grid_rfc)
+        # 'LDA': (LDA(), param_grid_lda),
+        # 'QDA': (QDA(), param_grid_qda),
+        # 'LR': (LogisticRegression(), param_grid_lr),
+        # 'DTR': (DecisionTreeClassifier(), param_grid_dtr),
+        'KNN': (KNeighborsClassifier(), param_grid_knn),
+        'SVM': (SVC(), param_grid_svm),
+        # 'RFC': (RandomForestClassifier(), param_grid_rfc)
     }
 
     df = pd.read_csv('data_preprocessed.csv')
