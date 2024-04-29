@@ -1,0 +1,9 @@
+params,mean_test_score,std_test_score,rank_test_score,split0_test_score,split1_test_score,split2_test_score,split3_test_score,split4_test_score,split5_test_score,split6_test_score,split7_test_score,split8_test_score,split9_test_score,split10_test_score,split11_test_score,split12_test_score,split13_test_score,split14_test_score,split15_test_score,split16_test_score,split17_test_score,split18_test_score,split19_test_score,split20_test_score,split21_test_score,split22_test_score,split23_test_score,split24_test_score,split25_test_score,split26_test_score,split27_test_score,split28_test_score,split29_test_score
+{'estimator__shrinkage': None},0.6497078393107721,0.013134849120848544,1,0.6781538461538461,0.6557993730407523,0.6382189239332097,0.6465888137676705,0.6378778531770513,0.653610771113831,0.6281094527363185,0.656155245603396,0.6430348258706468,0.6577992744860943,0.6361386138613861,0.6419753086419753,0.6678944137507673,0.6269397889509621,0.6621538461538462,0.6438356164383562,0.6444855206407887,0.6419294990723562,0.6858542559706062,0.6490384615384616,0.6450428396572827,0.6419294990723562,0.64,0.6468401486988847,0.6579925650557621,0.6605392156862745,0.6515892420537898,0.6654501216545012,0.639344262295082,0.6469135802469136
+{'estimator__shrinkage': 'auto'},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.99},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.8},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.6},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.4},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.2},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+{'estimator__shrinkage': 0.01},,,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
