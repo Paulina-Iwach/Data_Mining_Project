@@ -6,7 +6,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import f1_score
 
-# Assuming df is your loaded dataset
 # df = pd.read_csv('your_dataset.csv')``
 
 def preprocess_data(df, dropna=True, drop_columns=[]):
@@ -66,15 +65,12 @@ if __name__ == "__main__":
     df = pd.read_csv('data_preprocessed.csv')
     df_processed = preprocess_data(df, drop_columns=['relationship_Wife'])
 
-    # Split dataset into training and test data
     X = df_processed.drop('income_>50K', axis=1)
     y = df_processed['income_>50K']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
 
-    # Define the cross-validation strategy
     cv_strategy = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 
-    # Search for the best model and parameters for each estimator
     best_models = {}
     best_parameters = {}
     for weights in class_weights:

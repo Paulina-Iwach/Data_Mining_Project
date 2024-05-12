@@ -12,7 +12,6 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import f1_score
 
-# Assuming df is your loaded dataset
 # df = pd.read_csv('your_dataset.csv')
 
 def preprocess_data(df, dropna=True, drop_columns=[]):
@@ -38,11 +37,9 @@ def perform_grid_search(X_train, y_train, estimator, param_grid, cv_strategy, de
     
     results = pd.DataFrame(grid_search.cv_results_)
     
-    # # Save the summary results to a CSV file
     # summary_results = results[['params', 'mean_test_score', 'std_test_score', 'rank_test_score']]
     # summary_results.to_csv(summary_results_file, index=False)
     
-    # Extract only the detailed results for the best parameter set
     columns_to_keep = ['params', 'mean_test_score', 'std_test_score', 'rank_test_score']
     columns_to_keep.extend([key for key in grid_search.cv_results_ if key.startswith('split')])
     results_filtered = results[columns_to_keep]
@@ -59,23 +56,22 @@ def evaluate_model(model, X_test, y_test):
 
 if __name__ == "__main__":
     param_grid_rfc = {
-        'estimator__n_estimators': [100, 200, 300, 500, 1000],  # Number of trees in the forest
-        'estimator__max_features': ['auto', 'sqrt', 'log2'],  # Number of features to consider at every split
-        'estimator__max_depth': [10, 20, 30, 40, 50, None],  # Maximum number of levels in tree
-        'estimator__min_samples_split': [2, 5, 10],  # Minimum number of samples required to split a node
-        'estimator__min_samples_leaf': [1, 2, 4],  # Minimum number of samples required at each leaf node
-        'estimator__criterion': ['gini', 'entropy', 'log_loss'] # Method of selecting samples for training each tree
+        'estimator__n_estimators': [100, 200, 300, 500, 1000],  
+        'estimator__max_features': ['auto', 'sqrt', 'log2'],  
+        'estimator__max_depth': [10, 20, 30, 40, 50, None],  
+        'estimator__min_samples_split': [2, 5, 10], 
+        'estimator__min_samples_leaf': [1, 2, 4],  
+        'estimator__criterion': ['gini', 'entropy', 'log_loss'] 
     }
 
     param_grid_lda = {
         # 'estimator__solver': ['svd', 'lsqr', 'eigen'],
-        # 'estimator__n_components': [1, 2, 3, ...], # Uncomment if dimensionality reduction is needed
-        # Shrinkage can only be used with the 'lsqr' and 'eigen' solvers
-        'estimator__shrinkage': [None, 'auto', 0.99, 0.8, 0.6, 0.4, 0.2, 0.01]  # or a list np.linspace(0, 1, num=10)
+        # 'estimator__n_components': [1, 2, 3, ...], 
+        'estimator__shrinkage': [None, 'auto', 0.99, 0.8, 0.6, 0.4, 0.2, 0.01]  
     }
 
     param_grid_qda = {
-        'estimator__reg_param': [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]  # Regularization parameter
+        'estimator__reg_param': [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]  
     }
 
     param_grid_lr = [
@@ -96,17 +92,16 @@ if __name__ == "__main__":
         'estimator__n_neighbors': [1, 3, 5, 7, 9, 11, 13, 15],
         'estimator__weights': ['uniform', 'distance'],
         # 'estimator__algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-        # 'estimator__p': [1, 2, 3]  # Typically, 1 (Manhattan) or 2 (Euclidean) are used, but you can explore others
+        # 'estimator__p': [1, 2, 3]  
     }
 
     param_grid_svm = {
-    'estimator__C': [0.1, 1, 10, 100],  # Regularization parameter
-    'estimator__kernel': ['linear', 'poly', 'rbf', 'sigmoid'],  # Type of kernel
-    'estimator__gamma': ['scale', 'auto', 0.01, 0.1, 1, 10],  # Kernel coefficient
-    'estimator__degree': [2, 3, 4]  # Degree for poly kernel
+    'estimator__C': [0.1, 1, 10, 100], 
+    'estimator__kernel': ['linear', 'poly', 'rbf', 'sigmoid'], 
+    'estimator__gamma': ['scale', 'auto', 0.01, 0.1, 1, 10],  
+    'estimator__degree': [2, 3, 4]  
     }
 
-    # Define your estimators and their parameter grids
     estimators_and_parameters = {
         # 'LDA': (LDA(), param_grid_lda),
         # 'QDA': (QDA(), param_grid_qda),
@@ -120,15 +115,12 @@ if __name__ == "__main__":
     df = pd.read_csv('data_preprocessed.csv')
     df_processed = preprocess_data(df, drop_columns=['relationship_Wife'])
 
-    # Split dataset into training and test data
     X = df_processed.drop('income_>50K', axis=1)
     y = df_processed['income_>50K']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
 
-    # Define the cross-validation strategy
     cv_strategy = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 
-    # Search for the best model and parameters for each estimator
     best_models = {}
     best_parameters = {}
     for name, (estimator, param_grid) in estimators_and_parameters.items():
@@ -140,7 +132,6 @@ if __name__ == "__main__":
         print(f"Best F1 score for {name}: {best_score}")
         print(f"Best parameters for {name}: {best_params}")
 
-    # Evaluate each model
     for name, model in best_models.items():
         f1 = evaluate_model(model, X_test, y_test)
         print(f'{name} F1 Score on Test Set: {f1}')
