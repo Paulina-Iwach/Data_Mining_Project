@@ -1,0 +1,65 @@
+[
+    {
+        "n_clusters": 2,
+        "silhouette_score": 0.22488881647586823,
+        "davies_bouldin_score": 1.3923241482571393,
+        "calinski_harabasz_score": 2321.6830855378116,
+        "inertia": 1192.635009765625
+    },
+    {
+        "n_clusters": 3,
+        "silhouette_score": 0.21793808043003082,
+        "davies_bouldin_score": 2.1813637506497994,
+        "calinski_harabasz_score": 1800.0723498007712,
+        "inertia": 1104.54736328125
+    },
+    {
+        "n_clusters": 4,
+        "silhouette_score": 0.21788647770881653,
+        "davies_bouldin_score": 2.311628812565867,
+        "calinski_harabasz_score": 1335.813127047287,
+        "inertia": 1040.303466796875
+    },
+    {
+        "n_clusters": 5,
+        "silhouette_score": 0.12027741968631744,
+        "davies_bouldin_score": 2.7724973638626578,
+        "calinski_harabasz_score": 1105.0815698731085,
+        "inertia": 985.4434814453125
+    },
+    {
+        "n_clusters": 6,
+        "silhouette_score": 0.11132257431745529,
+        "davies_bouldin_score": 2.91454901041657,
+        "calinski_harabasz_score": 975.765654912893,
+        "inertia": 949.7552490234375
+    },
+    {
+        "n_clusters": 7,
+        "silhouette_score": 0.11249931901693344,
+        "davies_bouldin_score": 3.4025254578187427,
+        "calinski_harabasz_score": 834.4291387514759,
+        "inertia": 915.5237426757812
+    },
+    {
+        "n_clusters": 8,
+        "silhouette_score": 0.113762766122818,
+        "davies_bouldin_score": 3.0861778617494813,
+        "calinski_harabasz_score": 759.5357686711412,
+        "inertia": 884.5679321289062
+    },
+    {
+        "n_clusters": 9,
+        "silhouette_score": 0.12578599154949188,
+        "davies_bouldin_score": 2.8241454106844825,
+        "calinski_harabasz_score": 755.5087443011224,
+        "inertia": 860.698974609375
+    },
+    {
+        "n_clusters": 10,
+        "silhouette_score": 0.13038784265518188,
+        "davies_bouldin_score": 2.9262848144718236,
+        "calinski_harabasz_score": 726.1849139812203,
+        "inertia": 839.6739501953125
+    }
+]
